@@ -1,10 +1,15 @@
 <x-layouts.layout>
     <div class="overflow-x-auto max-h-full">
         @if(session('status'))
-            <div role="alert" class="alert alert-success">
-                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                <span>{{session('status')}}</span>
-            </div>
+            <script>
+                Swal.fire("{{session("status")}}");
+            </script>
+
+
+            {{--            <div id="alertSession" role="alert" class="alert alert-success">--}}
+            {{--                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>--}}
+            {{--                <span>{{session('status')}}</span>--}}
+            {{--            </div>--}}
         @endif
         <a href="/profesores/create" class="btn btn-primary w-full text-3xl"> Añadir Profesor</a>
         <table class="table table-xs table-pin-rows ">
@@ -26,7 +31,7 @@
                         <form action="/profesores/{{$profesor->id}}" method="POST">
                             @csrf
                             @method("DELETE")
-                            <button class="btn" type="submit">
+                            <button onClick="confirmDelete(event, this) " class="btn" type="submit">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                      stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-500">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -52,5 +57,35 @@
 
         </table>
     </div>
+    <script>
+        function confirmDelete(event, button) {
+            event.preventDefault();
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, borrarlo!'
+            }).then((result) => {
+                console.log("Resultado "+result);
+                    if (result.isConfirmed)
+                        button.closest('form').submit();
+                }
+
+            )
+
+        }
+
+        // window.onload=funcion()
+        // {
+        //     setTimeout(function()  {
+        //         document.getElementById("alertSession").style.display = "none"},5000);
+        // }
+        // window.onload=()=>
+        //     setTimeout(()=>
+        //         document.getElementById("alertSession").style.display = "none",5000);
+    </script>
 
 </x-layouts.layout>

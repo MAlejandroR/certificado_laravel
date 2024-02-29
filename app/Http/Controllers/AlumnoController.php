@@ -13,7 +13,7 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-         $alumnos = Alumno::all();
+         $alumnos = Alumno::paginate(5);
 
          return view("alumnos.listado",["alumnos"=> $alumnos]);
 
@@ -89,7 +89,7 @@ class AlumnoController extends Controller
     public function destroy(Alumno $alumno)
     {
         $alumno->delete();
-        $alumnos = Alumno::all();
+        $alumnos = Alumno::paginate(5);
         return view ("alumnos.listado",["alumnos"=>$alumnos]);
 
 

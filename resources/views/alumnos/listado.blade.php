@@ -13,7 +13,7 @@
             </tr>
 
             @foreach($alumnos as $alumno)
-                <tr>
+                <td>
                     <td>{{$alumno->nombre}}</td>
                     <td>{{$alumno->apellidos}}</td>
                     <td>{{$alumno->direccion}}</td>
@@ -43,11 +43,11 @@
                         </a>
                     </td>
 
-
                 </tr>
             @endforeach
 
         </table>
     </div>
+    {{$alumnos->links("vendor.pagination.paginacion")}}
 
 </x-layouts.layout>

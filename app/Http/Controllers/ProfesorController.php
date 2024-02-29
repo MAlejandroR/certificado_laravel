@@ -35,8 +35,9 @@ class ProfesorController extends Controller
      $valores = $request->input();
      $profesor = new Profesor($valores);
      $profesor->save();
+     session()->flash("status", "Se ha creado el profesor $profesor->nombre");
+
      $profesores = Profesor::all();
-     session()->flash("status", "Se ha creado $profesor->id");
      return view ("profesores.listado",["profesores"=>$profesores]);
     }
 
@@ -53,6 +54,9 @@ class ProfesorController extends Controller
      */
     public function edit(Profesor $profesor)
     {
+
+//        $profesor= Profesor::find($id);
+        return view ("profesores.edit", ['profesor'=>$profesor]);
         //
     }
 
@@ -61,6 +65,8 @@ class ProfesorController extends Controller
      */
     public function update(UpdateProfesorRequest $request, Profesor $profesor)
     {
+        session()->flash("status", "Se ha actualizado El profesor  $profesor->nombre");
+
         //
     }
 
@@ -72,7 +78,7 @@ class ProfesorController extends Controller
         $profesor =Profesor::find($id);
         $profesor->delete();
         $profesores = Profesor::all();
-        session()->flash("status", "Se ha borrado $profesor->id");
+        session()->flash("status", "Se ha borrado El profesor  $profesor->nombre");
         return view ("profesores.listado",["profesores"=>$profesores]);
         //
     }
