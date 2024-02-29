@@ -33,7 +33,7 @@
                         </form>
                     </td>
                     <td>
-                        <a href="/alumnos/{{$alumno->id}}/edit" class="bth">
+                        <a href="{{route("alumnos.edit",[$alumno->id, "page"=>$page])}}" class="bth">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                  stroke="currentColor" class="w-6 h-6 text-blue-700">
                                 <path stroke-linecap="round" stroke-linejoin="round"

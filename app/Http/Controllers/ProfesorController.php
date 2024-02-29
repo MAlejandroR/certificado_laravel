@@ -14,6 +14,8 @@ class ProfesorController extends Controller
     public function index()
     {
         $profesores = Profesor::all();
+
+
         return view ("profesores.listado",["profesores"=>$profesores]);
         //
     }
@@ -56,6 +58,7 @@ class ProfesorController extends Controller
     {
 
 //        $profesor= Profesor::find($id);
+
         return view ("profesores.edit", ['profesor'=>$profesor]);
         //
     }

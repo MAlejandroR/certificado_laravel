@@ -46,7 +46,7 @@ Route::resource("profesores", ProfesorController::class);
 
 Route::get('/', function () {
     return view('main');
-});
+})->name("index");
 
 Route::get('/dashboard', function () {
     return view('dashboard');

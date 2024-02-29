@@ -41,7 +41,7 @@
                         </form>
                     </td>
                     <td>
-                        <a href="/profesores/{{$profesor->id}}/edit" class="bth">
+                        <a href="{{route("profesores.edit",$profesor->id)}}" class="bth">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                  stroke="currentColor" class="w-6 h-6 text-blue-700">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -87,5 +87,6 @@
         //     setTimeout(()=>
         //         document.getElementById("alertSession").style.display = "none",5000);
     </script>
+
 
 </x-layouts.layout>
