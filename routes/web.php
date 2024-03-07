@@ -25,6 +25,8 @@ Route::view("main", "main");
 
 Route::view("about", "about");
 
+Route::view("saludo", "saludo");
+
 Route::resource("alumnos", AlumnoController::class);
 
 Route::get("noticias/{id}", fn($numero)=>"<h1>Nocicioa numero $numero</h1>");

@@ -12,8 +12,9 @@ class AlumnoSeeder extends Seeder  {
 
 private function get_idiomas(): array
 {
-    $idiomas = ["Francés", "Inglés", "Alemán", "Ruso", "Rumano", "Portugués",
-        "Catalán", "Gallego", "Fabla", "Vasco", "Italiano", "Chino"];
+
+    $idiomas = config("idiomas.listado_idiomas");
+
     $idiomas_hablados = [];
     $numero_idiomas = rand(0, 4);
     if ($numero_idiomas == 0)

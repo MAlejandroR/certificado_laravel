@@ -30,3 +30,47 @@ Cómo el modelo se llama Profesor y la tabla queiro que se llame prefores y no p
 
 ###
 Poblamos la tabla
+
+
+# Instalar React en laravel
+
+Primero instalamos 3 paquetes:
+```bash
+  npm install --save-dev @vitejs/plugin-react
+    npm install react@latest react-dom@latest
+```
+Modificamos el fichero de configuración vite.config.js añadiendo en nuevo plugin que vamos a utilizar de react
+````js
+//.....
+import react from "@vitejs/plugin-react"
+
+
+export default defineConfig({
+plugins: [
+        react(),
+        laravel({
+            // .....
+        }),
+],
+});
+````
+
+Importamos la librería de react en app.jsx
+
+````js
+import './bootstrap';
+// import 'Code.jsx';
+
+import React from "react";
+import {createRoot} from "react-dom/client";
+
+````
+
+Ahora en la plantilla general especificamos a vite que cage app.jsx
+
+````blade
+    @viteReactRefresh
+    @vite(["resources/css/app.css", "resources/js/app.jsx"])
+````
+
+

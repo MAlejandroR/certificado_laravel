@@ -13,7 +13,7 @@
             </tr>
 
             @foreach($alumnos as $alumno)
-                <td>
+                <tr onclick="editar_alumno({{$alumno->id}})" class="hover:bg-blue-200 hover:cursor-pointer">
                     <td>{{$alumno->nombre}}</td>
                     <td>{{$alumno->apellidos}}</td>
                     <td>{{$alumno->direccion}}</td>
@@ -33,7 +33,7 @@
                         </form>
                     </td>
                     <td>
-                        <a href="{{route("alumnos.edit",[$alumno->id, "page"=>$page])}}" class="bth">
+                        <a href="{{route("alumnos.edit",[$alumno->id, "page"=>$page])}}" class="btn">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                  stroke="currentColor" class="w-6 h-6 text-blue-700">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -44,10 +44,18 @@
                     </td>
 
                 </tr>
+                </a>
             @endforeach
 
         </table>
+
     </div>
+    <script>
+        function editar_alumno(id){
+            window.location=`http://localhost:8000/alumnos/${id}`
+        }
+
+    </script>
     {{$alumnos->links("vendor.pagination.paginacion")}}
 
 </x-layouts.layout>

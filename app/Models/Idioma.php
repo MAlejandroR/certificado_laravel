@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Idioma extends Model
 {
     use HasFactory;
+    protected $fillable = ["idioma"];
+
+    public function alumno(){
+        return $this->belongsTo(Alumno::class);
+    }
+
+
 }

@@ -51,6 +51,8 @@ class AlumnoController extends Controller
      */
     public function show(Alumno $alumno)
     {
+
+        return view("alumnos.show", compact('alumno'));
         //
     }
 
@@ -61,7 +63,7 @@ class AlumnoController extends Controller
     {
         $page = Request::get("page");
 
-        return view ("alumnos.editar", ["alumno"=>$alumno,"page"=>$page]);
+        return view ("alumnos.editar", ["alumno"=>$alumno,"page"=>$page, "idiomas"=>$idiomas]);
 
 
     }
